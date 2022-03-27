@@ -1,0 +1,37 @@
+<!--
+	edu_17_1_9.html
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>按指定范围range查找对象</title>
+	</head>
+
+	<body>
+		<script>
+			//假设数据库创建及对象仓库初始化工作已经完成,生成range对象，同edu_17_1_8.html
+			var person = { //定义对象
+				name: name,
+				email: email,
+				created: new Date()
+			}
+			var transaction = db.transaction(["people"], "readonly"); //为people定义只读事件
+			var objectStore = transaction.objectStore("people"); //获取people对象仓库
+			var index = objectStore.index("name"); //按姓名进行索引
+			var range = IDBKeyRange.bound('B', 'D'); //生成范围range对象
+			index.openCursor(range).onsuccess = function(e) { // 打开索引游标，启动成功监听事件
+				var cursor = e.target.result; //获取结果集
+				if(cursor) { //通过控制台输出相关信息
+					console.log(cursor.key + ":");
+					for(var field in cursor.value) {
+						console.log(cursor.value[field]);
+					}
+					cursor.continue(); //下移游标，迭代执行
+				}
+			};
+		</script>
+	</body>
+
+</html>

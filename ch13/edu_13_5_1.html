@@ -1,0 +1,24 @@
+<!--	edu_13_5_1.html-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>视频标记的应用</title>
+	</head>
+	<body>
+		<fieldset style="text-align:center;float:left;">
+			<legend>src属性提供视频文件</legend>
+		  <video src="movie.ogg"  poster="url" loop autoplay width="320" height="240" controls="controls">
+                 您的浏览器不支持 video标记。
+      </video>
+		</fieldset>
+		<fieldset style="text-align:center;float:left;">
+			<legend>source标记提供不同的视频文件</legend>
+	    <video width="320" height="240" controls="controls">
+        <source src="movie.ogg" type="video/ogg">
+        <source src="movie.mp4" type="video/mp4">
+                 您的浏览器不支持 video标记。
+      </video>
+		</fieldset>
+	</body>
+</html>
